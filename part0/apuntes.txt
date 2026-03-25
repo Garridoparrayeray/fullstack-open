@@ -1,0 +1,49 @@
+¿Qué es una nota técnicamente?
+Para el servidor, una nota no es un dibujo ni un archivo de texto con formato. Es un objeto JSON. 
+Una nota se ve así:
+JSON
+{
+  "content": "Aprender Full Stack es genial",
+  "date": "2026-03-25T12:00:00.000Z"
+}
+content: El mensaje que escribiste.
+
+date: La fecha y hora exacta en la que se creó, normalmente un proceso automatizado.
+
+2. ¿Cómo aparecen en pantalla? 
+ DOM (Document Object Model). Cuando tu navegador recibe esa lista de notas en formato JSON, no sabe qué hacer con ellas hasta que el archivo JavaScript (main.js o spa.js) lo carga.
+
+El JavaScript hace lo siguiente:
+
+2.1. Lee la lista de notas.
+
+2.2. Crea un elemento de lista HTML (<li>) para cada una.
+
+2.3. Inserta ese elemento dentro de la lista principal (<ul>) de la página.
+
+3. ¿Cómo funcionan los envíos? (Tradicional vs. SPA)
+Dependiendo de qué página estés usando, la nota "viaja" de forma distinta:
+
+En la versión Tradicional, primer ejercicio 0.4:
+Es como enviar una carta por correo postal.
+
+Escribes la nota y pulsas "Save".
+
+El navegador se detiene, envía todo el formulario al servidor y espera.
+
+El servidor guarda la nota y responde "Vale, ahora vuelve a cargar toda la web desde el principio para verla".
+
+Resultado: La página parpadea y se recarga entera.
+
+En la versión SPA (Ejercicio 0.6):
+Es como un mensaje de WhatsApp.
+
+Escribes la nota y pulsas "Save".
+
+El JavaScript intercepta el botón y dice: "no recargues nada".
+
+El JS añade la nota a tu pantalla al instante para que no esperes.
+
+Por debajo (de forma asíncrona), le manda un mensaje rápido al servidor avisando del cambio.
+
+Resultado: Todo es fluido, sin parpadeos.
